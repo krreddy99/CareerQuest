@@ -1,0 +1,13 @@
+{
+  "name": "career-guidance-portal",
+  "version": "1.0.0",
+  "description": "A premium career guidance portal for Indian students.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server ./"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

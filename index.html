@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerQuest | Your Future, Defined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="news-ticker-container">
+    <div class="ticker-label">NEWS</div>
+    <div class="ticker-content" id="newsTicker">
+      <span>JEE Main 2026 Registration is now LIVE! - Apply before May 15.</span>
+      <span>NEET UG 2026: Official syllabus released on NTA website.</span>
+      <span>National Scholarship Portal (NSP) deadlines extended to June 30.</span>
+      <span>New Vocational Track: Drone Technology added to State Polytechnic.</span>
+      <span>KCET Results Announced - Check merit list at KEA portal.</span>
+    </div>
+  </div>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="glass-header">
+    <div class="logo">
+      <i data-lucide="compass"></i>
+      <span>CareerQuest</span>
+    </div>
+    <nav>
+      <a href="#" onclick="navigateTo('home')" class="nav-link active" data-page="home">Home</a>
+      <a href="#" onclick="navigateTo('explorer')" class="nav-link" data-page="explorer">Explore</a>
+      <a href="#" onclick="navigateTo('exams')" class="nav-link" data-page="exams">Exams</a>
+      <a href="#" onclick="navigateTo('assessment')" class="nav-link" data-page="assessment">Assessment</a>
+      <a href="#" onclick="navigateTo('counseling')" class="nav-link" data-page="counseling">Counseling</a>
+      <a href="#" onclick="navigateTo('parents')" class="nav-link" data-page="parents">Parents</a>
+      <a href="#" onclick="navigateTo('dashboard')" class="nav-link nav-dashboard" data-page="dashboard"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-portal"><i data-lucide="user-circle"></i>Student Portal</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME SECTION -->
+    <section id="home" class="page-section active">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="badge">Next Generation Career Guide</span>
+          <h1>Designing Your <span class="gradient-text">Future Self</span></h1>
+          <p>Navigate the complex world of Indian education. From SSLC to PUC and beyond, we help you find the perfect path.</p>
+          <div class="search-container">
+            <i data-lucide="search"></i>
+            <input type="text" id="careerSearch" placeholder="Search careers (e.g. Aeronautical Engineer)">
+            <button class="btn-primary" onclick="handleSearch()">Explore</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><span>500+</span> Careers</div>
+            <div class="stat"><span>10k+</span> Students</div>
+            <div class="stat"><span>24/7</span> Support</div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="career_portal_hero_1776575756831.png" alt="Career Vision">
+          <div class="floating-card c-1">
+            <i data-lucide="graduation-cap"></i>
+            <span>After 12th / PUC</span>
+          </div>
+          <div class="floating-card c-2">
+            <i data-lucide="briefcase"></i>
+            <span>Job Opportunities</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-links section-padding">
+        <h2 class="section-title">Step-by-Step Guidance</h2>
+        <div class="glass-grid">
+          <div class="glass-card clickable" onclick="navigateTo('explorer', '10th')">
+            <div class="card-icon"><i data-lucide="book-open"></i></div>
+            <h3>After 10th / SSLC</h3>
+            <p>Explore Polytechnic, ITI, and Diploma paths.</p>
+            <span class="link-arrow">Learn More <i data-lucide="arrow-right"></i></span>
+          </div>
+          <div class="glass-card clickable" onclick="navigateTo('explorer', '12th')">
+            <div class="card-icon"><i data-lucide="award"></i></div>
+            <h3>After 12th / PUC</h3>
+            <p>Medical, Engineering, Arts, and Law paths.</p>
+            <span class="link-arrow">Learn More <i data-lucide="arrow-right"></i></span>
+          </div>
+          <div class="glass-card clickable" onclick="navigateTo('assessment')">
+            <div class="card-icon"><i data-lucide="brain-circuit"></i></div>
+            <h3>Career Matcher</h3>
+            <p>Take our AI-driven assessment quiz.</p>
+            <span class="link-arrow">Start Test <i data-lucide="arrow-right"></i></span>
+          </div>
+          <div class="glass-card clickable" onclick="navigateTo('counseling')">
+            <div class="card-icon"><i data-lucide="users"></i></div>
+            <h3>Expert Advice</h3>
+            <p>Book a session with top career counselors.</p>
+            <span class="link-arrow">Book Now <i data-lucide="arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div id="testimonials" class="section-padding">
+        <h2 class="section-title">Success <span class="gradient-text">Stories</span></h2>
+        <div id="testimonialsList" class="glass-grid">
+          <!-- Testimonials injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGAL SECTION -->
+    <section id="legal" class="page-section">
+      <div id="legal-info" class="section-padding">
+        <div class="legal-tabs-container">
+          <button class="legal-tab-btn active" onclick="switchLegalTab('disclaimer')">Disclaimer</button>
+          <button class="legal-tab-btn" onclick="switchLegalTab('privacy')">Privacy Policy</button>
+          <button class="legal-tab-btn" onclick="switchLegalTab('terms')">Terms & Conditions</button>
+        </div>
+
+        <div class="glass-card legal-content-card">
+          <div id="legal-disclaimer" class="legal-pane active">
+            <h2 class="gradient-text" style="font-size: 1.5rem; margin-bottom: 20px;">Disclaimer</h2>
+            <div class="legal-text">
+              <p>The information provided on this website, CareerQuest, is intended for general guidance and informational purposes only. While we strive to ensure that all content is accurate and up to date, we make no guarantees regarding the completeness, reliability, or accuracy of the information.</p>
+              <p>Career options, eligibility criteria, entrance exams, and admission processes may vary depending on institutions, states, and governing bodies. Users are advised to verify details from official sources or consult authorized institutions before making any academic or career decisions.</p>
+              <p>CareerQuest does not take responsibility for any decisions made based on the information provided on this platform. The use of this website and its content is solely at the user’s own risk.</p>
+              <p>Our counseling services aim to guide students based on available data, individual interests, and aptitude; however, final decisions and outcomes remain the responsibility of the user.</p>
+              <p>External links, if any, are provided for convenience. We do not have control over the content or availability of those sites and do not endorse them.</p>
+              <p style="margin-top: 20px; font-weight: 600;">CareerQuest<br>Empowering Indian students to choose the right path</p>
+            </div>
+          </div>
+
+          <div id="legal-privacy" class="legal-pane">
+            <h2 class="gradient-text" style="font-size: 1.5rem; margin-bottom: 20px;">Privacy Policy</h2>
+            <div class="legal-text">
+              <h3>Introduction</h3>
+              <p>At CareerQuest, we are committed to protecting the privacy of our users. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website.</p>
+              
+              <h3>Information We Collect</h3>
+              <ul>
+                <li>Personal Information (Name, Email, Phone Number)</li>
+                <li>Academic details (Class, Stream, Interests)</li>
+                <li>Usage data (pages visited, time spent on site)</li>
+              </ul>
+
+              <h3>How We Use Your Information</h3>
+              <ul>
+                <li>Provide career guidance and counseling services</li>
+                <li>Respond to your queries and requests</li>
+                <li>Improve website content and user experience</li>
+                <li>Send important updates or communication (if opted)</li>
+              </ul>
+
+              <h3>Data Protection</h3>
+              <p>We implement appropriate security measures to protect your personal information. However, no online system is completely secure, and we cannot guarantee absolute security.</p>
+
+              <h3>Sharing of Information</h3>
+              <ul>
+                <li>We do not sell or rent your personal data to third parties</li>
+                <li>Information may be shared with trusted partners only for service delivery (if required)</li>
+                <li>We may disclose information if required by law</li>
+              </ul>
+
+              <h3>Cookies</h3>
+              <p>Our website may use cookies to enhance user experience and analyze website traffic.</p>
+
+              <h3>User Consent</h3>
+              <p>By using our website, you consent to our Privacy Policy and agree to its terms.</p>
+
+              <h3>Updates to Policy</h3>
+              <p>We may update this policy from time to time. Users are encouraged to review this page periodically.</p>
+            </div>
+          </div>
+
+          <div id="legal-terms" class="legal-pane">
+            <h2 class="gradient-text" style="font-size: 1.5rem; margin-bottom: 20px;">Terms & Conditions</h2>
+            <div class="legal-text">
+              <h3>Introduction</h3>
+              <p>Welcome to CareerQuest. By accessing and using this website, you agree to comply with and be bound by the following Terms & Conditions.</p>
+
+              <h3>Use of Website</h3>
+              <ul>
+                <li>The content is for general information and guidance purposes only</li>
+                <li>Users must not misuse the website or engage in unlawful activities</li>
+                <li>Unauthorized use of this website may result in legal action</li>
+              </ul>
+
+              <h3>Intellectual Property</h3>
+              <p>All content on this website (text, design, graphics, logo) is the property of CareerQuest and is protected by applicable laws. Unauthorized reproduction is prohibited.</p>
+
+              <h3>User Responsibility</h3>
+              <ul>
+                <li>Users are responsible for the accuracy of the information they provide</li>
+                <li>Career decisions should be made after proper verification from official sources</li>
+              </ul>
+
+              <h3>Limitation of Liability</h3>
+              <p>CareerQuest shall not be held liable for:</p>
+              <ul>
+                <li>Any loss or damage arising from use of the website</li>
+                <li>Decisions made based on the information provided</li>
+              </ul>
+
+              <h3>Third-Party Links</h3>
+              <p>Our website may include links to external websites. We are not responsible for the content or policies of those websites.</p>
+
+              <h3>Modifications</h3>
+              <p>CareerQuest reserves the right to update or modify these Terms at any time without prior notice.</p>
+
+              <h3>Governing Law</h3>
+              <p>These terms shall be governed by and interpreted in accordance with the laws of India.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- EXPLORER SECTION -->
+    <section id="explorer" class="page-section">
+      <div class="section-header center">
+        <h1>Career <span class="gradient-text">Roadmap Explorer</span></h1>
+        <p>Digitally transcribed pathways based on the CIGMA career guidance framework.</p>
+        <div class="toggle-container">
+          <button id="toggle10" class="toggle-btn active" onclick="setExplorerMode('10th')">After 10th</button>
+          <button id="toggle12" class="toggle-btn" onclick="setExplorerMode('12th')">After 12th</button>
+        </div>
+      </div>
+
+      <div class="explorer-container">
+        <div id="explorerSidebar" class="explorer-sidebar">
+          <!-- Categories will be injected here -->
+        </div>
+        <div id="explorerContent" class="explorer-content">
+          <div class="empty-state">
+            <i data-lucide="map"></i>
+            <h3>Select a category to explore paths</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTRANCE EXAMS SECTION -->
+    <section id="exams" class="page-section">
+      <div class="section-header center">
+        <h1>Entrance <span class="gradient-text">Exam Tracker</span></h1>
+        <p>Stay ahead with direct links to official registration portals and exam details.</p>
+        <div class="filter-tabs" id="examFilters">
+          <button class="filter-tab active" onclick="filterExams('All')">All</button>
+          <button class="filter-tab" onclick="filterExams('Engineering')">Engineering</button>
+          <button class="filter-tab" onclick="filterExams('Medical')">Medical</button>
+          <button class="filter-tab" onclick="filterExams('Allied Health')">Pharmacy/Allied</button>
+          <button class="filter-tab" onclick="filterExams('Design')">Design/Arch</button>
+          <button class="filter-tab" onclick="filterExams('Management')">Management</button>
+          <button class="filter-tab" onclick="filterExams('Defense')">Defense</button>
+          <button class="filter-tab" onclick="filterExams('General')">Degree/CUET</button>
+        </div>
+      </div>
+      <div id="examsGrid" class="glass-grid">
+        <!-- Exams injected here -->
+      </div>
+    </section>
+
+    <!-- ASSESSMENT SECTION -->
+    <section id="assessment" class="page-section">
+      <div class="quiz-container glass-card">
+        <div id="quizIntro">
+          <i data-lucide="brain" class="large-icon"></i>
+          <h2>Career Interest Discovery</h2>
+          <p>Answer 10 simple questions to see which career streams align with your personality.</p>
+          <button class="btn-primary" onclick="startQuiz()">Start Assessment</button>
+        </div>
+        <div id="quizContent" style="display:none;">
+          <div class="quiz-progress">
+            <div id="quizProgressBar" class="progress-fill" style="width: 0%"></div>
+          </div>
+          <h3 id="quizQuestion">Question will appear here</h3>
+          <div id="quizOptions" class="quiz-options">
+            <!-- Options injected here -->
+          </div>
+        </div>
+        <div id="quizResult" style="display:none;">
+          <div class="result-animation">
+            <i data-lucide="sparkles" class="large-icon pulse"></i>
+          </div>
+          <h2>Your Top Matches</h2>
+          <div id="matchList" class="match-list"></div>
+          <button class="btn-secondary" onclick="resetQuiz()">Retake Test</button>
+          <button class="btn-primary" onclick="navigateTo('explorer')">Explore These Careers</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNSELING SECTION -->
+    <section id="counseling" class="page-section">
+      <div class="split-layout">
+        <div class="counseling-info">
+          <h1>Professional <span class="gradient-text">Counseling</span></h1>
+          <p>Get personalized advice from experts who understand the Indian education landscape.</p>
+          <div class="benefit-list">
+            <div class="benefit"><i data-lucide="check-circle"></i> 1-on-1 Personalized Session</div>
+            <div class="benefit"><i data-lucide="check-circle"></i> College Selection Guidance</div>
+            <div class="benefit"><i data-lucide="check-circle"></i> Entrance Exam Strategy</div>
+          </div>
+        </div>
+        <div class="counseling-form glass-card">
+          <h3>Book Your Slot</h3>
+          <form id="bookingForm" onsubmit="handleBooking(event)">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label>Current Status</label>
+              <select required>
+                <option value="">Select Level</option>
+                <option value="10th">After 10th / SSLC</option>
+                <option value="12th">After 12th / PUC</option>
+                <option value="ug">Undergraduate</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+91 XXXX XXX XXX" required>
+            </div>
+            <div class="form-group">
+              <label>Message/Inquiry</label>
+              <textarea placeholder="Tell us about your career goals..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">Reserve Session</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARENTS SECTION -->
+    <section id="parents" class="page-section">
+      <div class="split-layout">
+        <div class="parent-content">
+          <span class="badge">Parental Guidance Hub</span>
+          <h1>Supporting Their <span class="gradient-text">Journey</span></h1>
+          <p>Expert advice on how to guide your child without pressure. Understand the landscape of 2026 careers.</p>
+          <div class="glass-grid mini">
+            <div class="glass-card small">
+              <h4>Financial Planning</h4>
+              <p>Education loans and SIPs for higher studies.</p>
+            </div>
+            <div class="glass-card small">
+              <h4>Emotional Health</h4>
+              <p>Identifying burnout and performance pressure.</p>
+            </div>
+          </div>
+        </div>
+        <div class="parent-image">
+          <img src="parent_guidance_visual_1776577112352.png" alt="Guidance">
+        </div>
+      </div>
+
+      <div class="scholarship-finder section-padding">
+        <h2 class="section-title">Scholarship Finder</h2>
+        <div id="scholarshipsList" class="glass-grid">
+          <!-- Scholarships injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard" class="page-section">
+      <div class="dashboard-header">
+        <h1>Welcome Back, <span class="gradient-text">Student</span></h1>
+        <p>Track your saved paths and test results.</p>
+      </div>
+      <div class="dashboard-grid">
+        <div class="glass-card">
+          <div class="card-header">
+            <h3>Recent Test</h3>
+            <i data-lucide="activity"></i>
+          </div>
+          <div class="result-summary">
+            <div class="score">85%</div>
+            <p>Alignment with Technical Streams</p>
+          </div>
+        </div>
+        <div class="glass-card">
+          <div class="card-header">
+            <h3>Saved Careers</h3>
+            <i data-lucide="bookmark"></i>
+          </div>
+          <ul class="saved-list">
+            <li>Aeronautical Engineering</li>
+            <li>Data Science</li>
+            <li>Visual Arts</li>
+          </ul>
+        </div>
+        <div class="glass-card">
+          <div class="card-header">
+            <h3>Upcoming Session</h3>
+            <i data-lucide="calendar"></i>
+          </div>
+          <p class="empty-text">No sessions booked yet.</p>
+          <button class="btn-secondary small" onclick="navigateTo('counseling')">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- CAREER DETAIL MODAL -->
+  </main>
+
+  <!-- CAREER DETAIL MODAL -->
+  <div id="careerModal" class="modal-overlay">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2 id="modalTitle" class="gradient-text">Career Detail</h2>
+        <button class="close-btn" onclick="closeModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div id="modalInfo">
+          <!-- Details injected here -->
+        </div>
+        <div class="roadmap-container">
+          <h4>Career Roadmap</h4>
+          <div id="careerRoadmap" class="roadmap-timeline">
+            <!-- Timeline nodes injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING AI CHAT -->
+  <div id="chatbotContainer" class="chatbot-container">
+    <div id="chatWindow" class="chat-window">
+      <div class="chat-header">
+        <div class="chat-logo">
+          <i data-lucide="bot"></i>
+          <span>Ask CareerQuest AI</span>
+        </div>
+        <button class="close-btn" onclick="toggleChat()"><i data-lucide="x"></i></button>
+      </div>
+      <div id="chatMessages" class="chat-messages">
+        <div class="message bot">Hello! I'm your AI counselor. Ask me anything about Indian careers or colleges.</div>
+        <div class="quick-actions">
+          <button onclick="handleQuickAction('Top Exams')">Top Exams</button>
+          <button onclick="handleQuickAction('Polytechnic')">Polytechnic</button>
+          <button onclick="handleQuickAction('ITI Trades')">ITI Trades</button>
+          <button onclick="handleQuickAction('Medical/Paramedical')">Medical</button>
+          <button onclick="handleQuickAction('Advanced Tech')">AI/Robotics</button>
+        </div>
+      </div>
+      <div id="chatInputSection" class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your question...">
+        <button onclick="sendMessage()"><i data-lucide="send"></i></button>
+      </div>
+    </div>
+    <button id="chatBubble" class="chat-bubble" onclick="toggleChat()">
+      <i data-lucide="message-square"></i>
+      <span class="pulse-ring"></span>
+    </button>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <i data-lucide="compass"></i>
+            <span>CareerQuest</span>
+          </div>
+          <p>Empowering Indian students to choose the right path.</p>
+          <div class="social-links">
+            <i data-lucide="facebook"></i>
+            <i data-lucide="twitter"></i>
+            <i data-lucide="linkedin"></i>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Legal & Policy</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openLegalTab('disclaimer')">Disclaimer</a></li>
+            <li><a href="javascript:void(0)" onclick="openLegalTab('privacy')">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="openLegalTab('terms')">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 CareerQuest Portal. Based on CIGMA Framework.
+    </div>
+  </footer>
+
+  <script src="script.js?v=13"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
