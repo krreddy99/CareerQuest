@@ -790,19 +790,40 @@ function navigateTo(pageId, extra = null) {
   document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
 
-  document.querySelectorAll('.nav-link').forEach(link => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  // Update Nav Links
+  navLinks.forEach(link => {
     link.classList.toggle('active', link.getAttribute('data-page') === pageId);
   });
+
+  // Handle Mobile Nav active states
+  mobileLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('data-page') === pageId);
+  });
+
+  // Close mobile menu after navigation
+  if (mobileMenu && mobileMenu.classList.contains('active')) {
+    toggleMobileMenu();
+  }
 
   // Handle specific section resets or updates
   if (pageId === 'explorer') {
     if (extra) setExplorerMode(extra);
     else renderExplorerSidebar();
   }
-
+  
   // Reload icons
   lucide.createIcons();
   window.scrollTo(0, 0);
+}
+
+// MOBILE NAVIGATION LOGIC
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.toggle('active');
 }
 
 // --- RENDER EXAMS & SCHOLARSHIPS ---
